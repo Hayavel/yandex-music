@@ -19,19 +19,11 @@ class UI(QMainWindow):
         # Load the ui file
         uic.loadUi("design/design.ui", self)
 
-        # Create directory for images and Music cache
-        try:
-            mkdir('./.MusicCache')
-        except FileExistsError:
-            pass
-        try:
+        # Create directory for images and playlists
+        if path.exists('./.images') == False:
             mkdir('./.images')
-        except FileExistsError:
-            pass
-        try:
+        if path.exists('./.playlists') == False:
             mkdir('./.playlists')
-        except FileExistsError:
-            pass
         
         # Directory for saved music
         self.folder_name = "C:/Users/" + getlogin() + "/Desktop"
@@ -51,7 +43,8 @@ class UI(QMainWindow):
         self.playlist_songs = self.findChild(QListWidget, "playlist_songs")
         self.playlist_name = self.findChild(QComboBox, "playlist_name")
         self.amount = self.findChild(QLabel, "amount")
-        
+        self.update_playlist = self.findChild(QPushButton, "update")
+
         # Define player's widgets
         self.back = self.findChild(QPushButton, "back")
         self.play = self.findChild(QPushButton, "play")
@@ -91,6 +84,7 @@ class UI(QMainWindow):
         self.all.clicked.connect(self.download_all)
         self.playlist_songs.setIconSize(QSize(48, 48))
         self.search_result_list.setIconSize(QSize(48, 48))
+        self.update_playlist.clicked.connect(self.update_tracks_list)
 
         self.play.clicked.connect(self.play_song)
         self.back.clicked.connect(self.back_music)
@@ -130,7 +124,7 @@ class UI(QMainWindow):
         self.amount.setText(amount)
         for j in songs:
             title = re.sub(r'\W', '', "".join(j.split("\n")))
-            self.playlist_songs.addItem(QListWidgetItem(QIcon(".images/" + title + ".png"), j))
+            self.playlist_songs.addItem(QListWidgetItem(QIcon(f".images/{title}.png"), j))
 
     # Download selected Track in playlist
     def download_track(self):
@@ -170,6 +164,19 @@ class UI(QMainWindow):
                 with open('design/button_style_done.css', 'r') as f:
                     self.all.setStyleSheet(''.join(f.readlines()))
 
+    def update_tracks_list(self):
+        # Update to current list of tracks in active playlist
+        playlist = self.playlist_name.currentText()
+        songs, amount = self.ym.return_tracks(playlist)
+        
+        self.playlist_songs.clear()
+
+        self.amount.setText(amount)
+        for j in songs:
+            title = re.sub(r'\W', '', ''.join(j.split("\n")))
+            self.playlist_songs.addItem(QListWidgetItem(QIcon(f'.images/{title}.png'), j))
+
+    # Change active playlist for download track from search list
     def search_download(self):
         self.playlist = 'search'
 
@@ -212,6 +219,9 @@ class UI(QMainWindow):
 
     # Start music with Double click
     def start_music(self, pList='normal'):
+        if path.exists('./.MusicCache') == False:
+            mkdir('./.MusicCache')
+
         if pList == 'search':
             self.ym.search(self.search.text())
             self.playlist_songs.setCurrentRow(-1)
@@ -321,7 +331,10 @@ class UI(QMainWindow):
     # Clear cache
     def closeEvent(self, event):
         self.player.stop_music()
-        shutil.rmtree('./.MusicCache')
+        try:
+            shutil.rmtree('./.MusicCache')
+        except:
+            pass
     
     # Open File Dialog
     def open_directory(self):

@@ -113,6 +113,7 @@ QScrollBar::sub-line:vertical {
      <font>
       <family>Comfortaa</family>
       <pointsize>11</pointsize>
+      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -151,6 +152,7 @@ QPushButton:!enabled {
      <font>
       <family>Comfortaa</family>
       <pointsize>11</pointsize>
+      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -361,6 +363,7 @@ QComboBox QAbstractItemView::item:hover {
      <font>
       <family>Comfortaa</family>
       <pointsize>11</pointsize>
+      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -896,6 +899,42 @@ QListWidget::item:checked: {
      <enum>Qt::ScrollBarAlwaysOff</enum>
     </property>
    </widget>
+   <widget class="QPushButton" name="update">
+    <property name="geometry">
+     <rect>
+      <x>484</x>
+      <y>22</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton { 
+	background-color: rgba(0, 0, 0, 0);
+	border-radius: 15%;
+}
+QPushButton:hover {
+	background-color: rgba(189, 189, 189, 25);
+}
+QPushButton:pressed {
+	 background-color: rgba(127, 127, 127, 25);
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>update.png</normaloff>update.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>24</width>
+      <height>24</height>
+     </size>
+    </property>
+   </widget>
    <zorder>musicBar</zorder>
    <zorder>musicSlider</zorder>
    <zorder>playlist_songs</zorder>
@@ -915,6 +954,7 @@ QListWidget::item:checked: {
    <zorder>total_len</zorder>
    <zorder>track_len</zorder>
    <zorder>search_result_list</zorder>
+   <zorder>update</zorder>
   </widget>
  </widget>
  <resources>
