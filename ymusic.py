@@ -78,13 +78,13 @@ class YM:
             return False
         else:
             title = re.sub(r'\W', ' ', self.tracks_normal_list[selected])
-            if path.exists(direct + '/' + title + '.mp3'):
+            if path.exists(f'{direct}/{title}.mp3'):
                 return True
             else:
                 if playlist == 'Мне нравится' or playlist == 'search':
-                    self.tracks[selected].download(direct + '/' + title + '.mp3')
+                    self.tracks[selected].download(f'{direct}/{title}.mp3')
                 else:
-                    self.tracks[selected].fetch_track().download(direct + '/' + title + '.mp3')
+                    self.tracks[selected].fetch_track().download(f'{direct}/{title}.mp3')
                 return True
 
     # Return active song's title, image and len         

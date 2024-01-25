@@ -1,3 +1,24 @@
-# My Yandex.Music desktop app
+# Моя копия десктоп приложения Яндекс.Музыка
 
-Desktop app for listening to your own playlists, searching for music, downloading and more (in the future).
+<img src="https://i.ibb.co/W3w7GX9/yandex-music.png">
+
+Это приложение использует неофициальное [yandex-music-api](https://github.com/MarshalX/yandex-music-api)
+[Инструкция](https://yandex-music.readthedocs.io/en/main/token.html) как получить свой токен
+
+## Features
+- [X] Прослушивание музыки
+- [ ] Поиск
+    - [X] Музыки
+    - [ ] Автора
+    - [ ] Альбома
+    - [ ] Плейлиста
+- [X] Скачивание музыки/плейлиста
+- [X] Обновление плейлиста
+- [ ] Создание нового плейлиста
+- [ ] Добавление понравившегося плейлиста
+- [ ] Добавление трека в плейлист
+- [ ] Редактирование плейлиста
+- [ ] Понравившиеся плейлисты
+- [ ] Понравившиеся альбомы
+- [ ] Моя волна (Радио)
+- [ ] Персональные подборки от яндекса
