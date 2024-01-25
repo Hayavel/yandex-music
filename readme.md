@@ -2,8 +2,9 @@
 
 <img src="https://i.ibb.co/W3w7GX9/yandex-music.png">
 
-Это приложение использует неофициальное [yandex-music-api](https://github.com/MarshalX/yandex-music-api)
-[Инструкция](https://yandex-music.readthedocs.io/en/main/token.html) как получить свой токен
+Это приложение использует неофициальное [yandex-music-api](https://github.com/MarshalX/yandex-music-api).
+
+[Инструкция](https://yandex-music.readthedocs.io/en/main/token.html) как получить свой токен.
 
 ## Features
 - [X] Прослушивание музыки
