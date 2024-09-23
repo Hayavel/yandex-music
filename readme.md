@@ -1,6 +1,6 @@
 # Моя копия десктоп приложения Яндекс.Музыка
 
-<img src="https://i.ibb.co/W3w7GX9/yandex-music.png">
+<img src="https://i.imgur.com/dNFwcFm.png">
 
 Это приложение использует неофициальное [yandex-music-api](https://github.com/MarshalX/yandex-music-api).
 
